@@ -83,6 +83,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="index.html">Accueil</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="realisation.html">Réalisation</a>
+              </li>
               <li class="nav-item active">
                 <a class="nav-link" href="contact.html">Contact<span class="sr-only">(actuel)</span></a>
               </li>
@@ -156,7 +159,7 @@
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>20 ter rue Schnapper, 78100 St Germain en Laye</span>
               </a>
-              
+
               <a href="tel:+33623446273">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
@@ -244,77 +247,81 @@
       });
     });
 
-      // Initialize Leaflet.js map
-  var mymap = L.map('mapid', {
-    scrollWheelZoom: false // Disable scroll wheel zoom
-  }).setView([48.898553, 2.093202], 15);
+    // Initialize Leaflet.js map
+    var mymap = L.map('mapid', {
+      scrollWheelZoom: false // Disable scroll wheel zoom
+    }).setView([48.898553, 2.093202], 15);
 
-  // Add OpenStreetMap tiles
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(mymap);
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
 
-  // Add a marker to the map
-  var marker = L.marker([48.898553, 2.093202]).addTo(mymap);
-  marker.bindPopup("<b>20 ter rue Schnapper</b><br>78100 Saint-Germain-en-Laye").openPopup();
+    // Add a marker to the map
+    var marker = L.marker([48.898553, 2.093202]).addTo(mymap);
+    marker.bindPopup("<b>20 ter rue Schnapper</b><br>78100 Saint-Germain-en-Laye").openPopup();
 
-  // Create a button to get directions
-  var directionButton = L.control({ position: 'bottomright' });
-  directionButton.onAdd = function (map) {
-    var div = L.DomUtil.create('div', 'direction-button');
-    div.innerHTML = '<button id="getDirections" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; font-size: 16px;">Directions</button>';
-    return div;
-  };
-  directionButton.addTo(mymap);
+    // Create a button to get directions
+    var directionButton = L.control({ position: 'bottomright' });
+    directionButton.onAdd = function (map) {
+      var div = L.DomUtil.create('div', 'direction-button');
+      div.innerHTML = '<button id="getDirections" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; font-size: 16px;">Directions</button>';
+      return div;
+    };
+    directionButton.addTo(mymap);
 
-  // Add event listener to the button for directions using the full address
-  document.getElementById('getDirections').addEventListener('click', function () {
-    window.open('https://www.google.com/maps/dir/?api=1&destination=20+ter+Rue+Schnapper,+78100+Saint-Germain-en-Laye,+France', '_blank');
-  });
+    // Add event listener to the button for directions using the full address
+    document.getElementById('getDirections').addEventListener('click', function () {
+      window.open('https://www.google.com/maps/dir/?api=1&destination=20+ter+Rue+Schnapper,+78100+Saint-Germain-en-Laye,+France', '_blank');
+    });
 
     // Event listener for the link to trigger the "Get Directions" button click
     document.getElementById('mapLink').addEventListener('click', function (e) {
-    e.preventDefault(); // Prevent default action of the link
-    document.getElementById('getDirections').click(); // Programmatically trigger the "Get Directions" button
-  });
-</script>
+      e.preventDefault(); // Prevent default action of the link
+      document.getElementById('getDirections').click(); // Programmatically trigger the "Get Directions" button
+    });
+  </script>
 
-<style>
-  /* Style for map container */
-  #mapid {
-    height: 400px;
-    width: 100%;
-  }
+  <style>
+    /* Style for map container */
+    #mapid {
+      height: 400px;
+      width: 100%;
+    }
 
-  /* Ensure the button is responsive and visible on all devices */
-  .direction-button {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-    border-radius: 5px;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Button styling for touch devices */
-  @media (max-width: 600px) {
+    /* Ensure the button is responsive and visible on all devices */
     .direction-button {
-      padding: 20px; /* Make button more tappable on smaller screens */
+      background-color: rgba(255, 255, 255, 0.8);
+      /* Semi-transparent background */
+      border-radius: 5px;
+      padding: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     }
 
-    #getDirections {
-      font-size: 18px; /* Increase button font size on mobile */
-      padding: 15px 30px; /* Adjust padding for touchscreens */
+    /* Button styling for touch devices */
+    @media (max-width: 600px) {
+      .direction-button {
+        padding: 20px;
+        /* Make button more tappable on smaller screens */
+      }
+
+      #getDirections {
+        font-size: 18px;
+        /* Increase button font size on mobile */
+        padding: 15px 30px;
+        /* Adjust padding for touchscreens */
+      }
     }
-  }
 
-  /* Styling for non-touch devices */
-  .leaflet-container {
-    cursor: grab;
-  }
+    /* Styling for non-touch devices */
+    .leaflet-container {
+      cursor: grab;
+    }
 
-  .leaflet-container:active {
-    cursor: grabbing;
-  }
-</style>
+    .leaflet-container:active {
+      cursor: grabbing;
+    }
+  </style>
 
 </body>
 
